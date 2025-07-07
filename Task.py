@@ -57,8 +57,12 @@ for participant in corrected_list:
     else:
         unpaid_list.append(participant)
 
+def get_name(participant: dict[str, str | bool]) -> str:
+    return str(participant["name"])
+
 
 print(f"Number of participants that haved paid: {len(paid_list)}")
 print("Participants that have not paid yet:")
-unpaid_list.sort(key=lambda x: x["name"]) # a list of dictionaries cannot be sorted without specifying which key to sort by; lambda is a function without a name defined directly.
+# former: unpaid_list.sort(key=lambda x: x["name"]) # a list of dictionaries cannot be sorted without specifying which key to sort by; lambda is a function without a name defined directly.
+unpaid_list.sort(key=get_name)
 pprint(unpaid_list, width=40)
